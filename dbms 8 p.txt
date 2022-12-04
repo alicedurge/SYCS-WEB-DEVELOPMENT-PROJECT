@@ -1,0 +1,36 @@
+
+
+create table dept
+(dept_id varchar(4) constraint chk_dept_id Primary key constraint chhk_dept_id check(dept_id like 'D%'),
+dname char(20) not null,
+salary number(8,2) constraint chhhhksalary check(salary>0));
+insert into dept
+values('D001','Sales','25000');
+insert into dept
+values('D002','Accounting','25000');
+insert into dept
+values('D003','Management','20000');
+insert into dept
+values('D004','HR','50000');
+
+
+create table Employee 
+(emp_id varchar(4) constraint chk_emp_id Primary key constraint chhk_emp_id check(emp_id like 'E%'),
+name char(20) not null,
+dept_id varchar(4) constraint ck_dept_id check(dept_id like 'D%'),
+addr varchar(20) not null,
+foreign key (dept_id) references dept(dept_id));
+insert into Employee 
+values('E101','jungkook','D001','seoul');
+insert into Employee 
+values('E102','yoongi','D001','jeju');
+insert into Employee 
+values('E103','namjoon','D002','itaewon');
+insert into Employee 
+values('E104','jin','D002','busan');
+insert into Employee 
+values('E105','taehyung','D003','ulsan');
+insert into Employee 
+values('E106','jimin','D003','daegu');
+insert into Employee 
+values('E107','hoseok','D004','gwangju');
